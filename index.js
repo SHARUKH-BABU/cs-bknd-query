@@ -29,7 +29,8 @@ app.post('/events', (req, res) => {
     }
     else if (event.type === "CommentCreated") {
         const { id, content, snippetId } = event.data;
-        snippets[snippetId].comments.push({ id, content });
+        if(!snippets[snippetId]) snippets[snippetId] = { id: snippetId, title: 'Unknown', code: '', comments: [] };
+
     }
     res.status(200).json({ status: 'OK' });
 });
