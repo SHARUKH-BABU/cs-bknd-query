@@ -25,7 +25,7 @@ app.post('/events', (req, res) => {
 
     if(event.type === "SnippetCreated") {
         const { id, title, code } = event.data;
-        snippets[id] = { id, title, comments: []};
+        snippets[id] = { id, title, code, comments: []};
     }
     else if (event.type === "CommentCreated") {
         const { id, content, snippetId } = event.data;
